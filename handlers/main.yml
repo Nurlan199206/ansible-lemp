@@ -13,3 +13,4 @@
 - name: mysql start
   service: name=mysql state=started
   when: ansible_os_family == "Debian"
+
