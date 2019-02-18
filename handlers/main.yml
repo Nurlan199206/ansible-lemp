@@ -13,9 +13,3 @@
 - name: mysql start
   service: name=mysql state=started
   when: ansible_os_family == "Debian"
-
-- name: copying t.php file for phpinfo
-  copy:
-    src: /etc/ansible/roles/ansible-lemp/files/t.php
-    dest: /var/www/html/
-  become: yes

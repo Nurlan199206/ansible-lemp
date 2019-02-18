@@ -26,6 +26,12 @@
           src: /etc/ansible/roles/ansible-lemp/files/nginx.conf
           dest: /etc/nginx/nginx.conf
         become: yes
+
+      - name: copying t.php file for phpinfo
+        copy:
+          src: /etc/ansible/roles/ansible-lemp/files/t.php
+          dest: /var/www/html/
+        become: yes
     when: ansible_os_family == "RedHat"
 
   - block: #======For Debian ========#
@@ -47,5 +53,11 @@
         copy:
           src: /etc/ansible/roles/ansible-lemp/files/ubuntu/default
           dest: /etc/nginx/sites-available/default
+        become: yes
+
+      - name: copying t.php file for phpinfo
+        copy:
+          src: /etc/ansible/roles/ansible-lemp/files/t.php
+          dest: /var/www/html/
         become: yes
     when: ansible_os_family == "Debian"
