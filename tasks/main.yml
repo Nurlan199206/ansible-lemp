@@ -40,7 +40,7 @@
         apt: name=php-fpm state=latest
 
       - name: install mysql-server for Debian
-        apt: name=mysql-server state=latest
+        apt: name=mysql-server state=latest update_cache=yes
         notify: mariadb start
 
       - name: copy the nginx config file and restart nginx
