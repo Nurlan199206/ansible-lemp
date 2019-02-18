@@ -2,7 +2,7 @@
   - block: #======For RedHat ========#  
       - name: install nginx for RedHat
         yum: name=nginx state=latest
-        notify: nginx redhat installed
+        notify: nginx start
 
       - name: install php for RedHat
         yum: name=php state=latest
@@ -31,19 +31,17 @@
   - block: #======For Debian ========#
       - name: install nginx for Debian
         apt: name=nginx state=latest
-        notify: nginx ubuntu installed
+        notify: nginx start
 
       - name: install php for Debain
         apt: name=php state=latest
-        notify: php ubuntu installed
 
       - name: install php-fpm for Debian
         apt: name=php-fpm state=latest
-        notify: php-fpm ubuntu installed
 
       - name: install mysql-server for Debian
         apt: name=mysql-server state=latest
-        notify: nginx ubuntu installed
+        notify: mariadb start
 
       - name: copy the nginx config file and restart nginx
         copy:

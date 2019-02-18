@@ -4,6 +4,7 @@
 
 - name: php-fpm start
   service: name=php-fpm state=started
+  when: ansible_os_family == "RedHat"
 
 - name: mariadb start
   service: name=mariadb state=started
