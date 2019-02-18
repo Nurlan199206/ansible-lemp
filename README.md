@@ -18,7 +18,7 @@ run command:
 
 yum install git ansible mc python2-PyMySQL -y
 
-git clone https://github.com/Nurlan199206/ansible-nginx-php-fpm-centos6 /etc/ansible/roles/ansible-nginx-php-fpm-centos6
+git clone https://github.com/Nurlan199206/ansible-lemp/etc/ansible/roles/ansible-lemp
 
 and
 
