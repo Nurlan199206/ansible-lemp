@@ -18,6 +18,13 @@ run command:
 
 yum install git ansible mc python2-PyMySQL -y
 
+or
+
+apt update && apt install git ansible mc -y
+mkdir /etc/ansible/roles
+
+for Debian liked distros
+
 git clone https://github.com/Nurlan199206/ansible-lemp/etc/ansible/roles/ansible-lemp
 
 and
