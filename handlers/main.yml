@@ -8,6 +8,11 @@
 
 - name: mariadb start
   service: name=mariadb state=started
+  when: ansible_os_family == "RedHat"
+
+- name: mariadb start
+  service: name=mysql state=started
+  when: ansible_os_family == "Debian"
 
 - name: copying t.php file for phpinfo
   copy:
