@@ -10,6 +10,6 @@
 
 - name: copying t.php file for phpinfo
   copy:
-    src: /etc/ansible/roles/ansible-nginx-php-fpm-centos6/files/t.php
+    src: /etc/ansible/roles/ansible-lemp/files/t.php
     dest: /var/www/html/
   become: yes

@@ -1,5 +1,5 @@
 - hosts: localhost
   become: yes
   roles:
-  - role: ansible-nginx-php-fpm-centos6
+  - role: ansible-lemp
 

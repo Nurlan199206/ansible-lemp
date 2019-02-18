@@ -17,13 +17,13 @@
 
       - name: copy the nginx default for RedHat
         template:
-          src: /etc/ansible/roles/ansible-nginx-php-fpm-centos6/files/default.j2
+          src: /etc/ansible/roles/ansible-lemp/files/default.j2
           dest: /etc/nginx/conf.d/default.conf
         become: yes
 
       - name: copy the nginx.conf for RedHat
         copy:
-          src: /etc/ansible/roles/ansible-nginx-php-fpm-centos6/files/nginx.conf
+          src: /etc/ansible/roles/ansible-lemp/files/nginx.conf
           dest: /etc/nginx/nginx.conf
         become: yes
     when: ansible_os_family == "RedHat"
@@ -47,7 +47,7 @@
 
       - name: copy the nginx config file and restart nginx
         copy:
-          src: /etc/ansible/roles/nginx-php-fpm/files/ubuntu/default
+          src: /etc/ansible/roles/ansible-lemp/files/ubuntu/default
           dest: /etc/nginx/sites-available/default
         become: yes
     when: ansible_os_family == "Debian"
