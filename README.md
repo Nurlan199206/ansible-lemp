@@ -22,7 +22,7 @@ git clone https://github.com/Nurlan199206/ansible-lemp/etc/ansible/roles/ansible
 
 and
 
-ansible-playbook --connection=local -s /etc/ansible/roles/ansible-nginx-php-fpm-centos6/nginx.yml
+ansible-playbook --connection=local -s /etc/ansible/roles/ansible-lemp/nginx.yml
 
 
 
