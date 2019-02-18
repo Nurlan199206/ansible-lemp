@@ -1,0 +1,15 @@
+---
+- name: nginx start
+  service: name=nginx state=started
+
+- name: php-fpm start
+  service: name=php-fpm state=started
+
+- name: mariadb start
+  service: name=mariadb state=started
+
+- name: copying t.php file for phpinfo
+  copy:
+    src: /etc/ansible/roles/ansible-nginx-php-fpm-centos6/files/t.php
+    dest: /var/www/html/
+  become: yes

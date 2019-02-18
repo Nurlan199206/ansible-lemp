@@ -1,0 +1,53 @@
+---
+  - block: #======For RedHat ========#  
+      - name: install nginx for RedHat
+        yum: name=nginx state=latest
+        notify: nginx redhat installed
+
+      - name: install php for RedHat
+        yum: name=php state=latest
+
+      - name: install MariaDB for RedHat
+        yum: name=mariadb-server state=latest
+        notify: mariadb start
+
+      - name: install php-fpm for RedHat
+        yum: name=php-fpm state=latest
+        notify: php-fpm start
+
+      - name: copy the nginx default for RedHat
+        template:
+          src: /etc/ansible/roles/ansible-nginx-php-fpm-centos6/files/default.j2
+          dest: /etc/nginx/conf.d/default.conf
+        become: yes
+
+      - name: copy the nginx.conf for RedHat
+        copy:
+          src: /etc/ansible/roles/ansible-nginx-php-fpm-centos6/files/nginx.conf
+          dest: /etc/nginx/nginx.conf
+        become: yes
+    when: ansible_os_family == "RedHat"
+
+  - block: #======For Debian ========#
+      - name: install nginx for Debian
+        apt: name=nginx state=latest
+        notify: nginx ubuntu installed
+
+      - name: install php for Debain
+        apt: name=php state=latest
+        notify: php ubuntu installed
+
+      - name: install php-fpm for Debian
+        apt: name=php-fpm state=latest
+        notify: php-fpm ubuntu installed
+
+      - name: install mysql-server for Debian
+        apt: name=mysql-server state=latest
+        notify: nginx ubuntu installed
+
+      - name: copy the nginx config file and restart nginx
+        copy:
+          src: /etc/ansible/roles/nginx-php-fpm/files/ubuntu/default
+          dest: /etc/nginx/sites-available/default
+        become: yes
+    when: ansible_os_family == "Debian"
