@@ -68,4 +68,9 @@
           src: /etc/ansible/roles/ansible-lemp/files/t.php
           dest: /var/www/html/
         become: yes
+
+      - name: service nginx reload
+        service:
+          name: nginx
+          state: reloaded
     when: ansible_os_family == "Debian"
