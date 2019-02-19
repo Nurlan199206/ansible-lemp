@@ -43,13 +43,18 @@
         notify: nginx start
 
       - name: install php7.2 for Debain
-        apt: name=php state=latest
+        apt: name=php7.2 state=latest
 
       - name: install php7.3 for Debain
         apt: name=php7.3 state=latest
 
-      - name: install php-fpm for Debian
-        apt: name=php-fpm state=latest
+      - name: Install a list of packages
+        apt:
+          name: "{{ packages }}"
+        vars:
+          packages:
+            - php7.2-fpm
+            - php7.3-fpm
 
       - name: Creates directory /var/www/html/php73/root
         file:
@@ -95,7 +100,7 @@
           dest: /var/www/html/
         become: yes
 
-      - name: copying 1.php file for phpinfo
+      - name: copying 1.php file for php7.3
         copy:
           src: /etc/ansible/roles/ansible-lemp/files/1.php
           dest: /var/www/html/php73/root/
