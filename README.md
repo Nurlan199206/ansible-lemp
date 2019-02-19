@@ -25,7 +25,7 @@ or
 apt update && apt install git ansible mc -y
 mkdir /etc/ansible/roles
 
-for Debian liked distros
+for Debian like distros
 
 git clone https://github.com/Nurlan199206/ansible-lemp/etc/ansible/roles/ansible-lemp
 
