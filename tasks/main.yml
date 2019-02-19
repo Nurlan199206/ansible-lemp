@@ -38,21 +38,19 @@
       - apt_repository:
           repo: ppa:ondrej/php
 
-      - name: install nginx for Debian
-        apt: name=nginx state=latest update_cache=yes
-        notify: nginx start
-
-      - name: install php7.2 for Debain
-        apt: name=php7.2 state=latest
-
-      - name: install php7.3 for Debain
-        apt: name=php7.3 state=latest
+      - name: apt update
+        apt: update_cache=yes
 
       - name: Install php-fpm 7.2/7.3
         apt:
           name: "{{ packages }}"
         vars:
           packages:
+            - nginx
+            - php7.1
+            - php7.2
+            - php7.3
+            - php7.1-fpm
             - php7.2-fpm
             - php7.3-fpm
 
@@ -66,7 +64,7 @@
         apt: name=mysql-server state=latest update_cache=yes
         notify: mysql start
 
-      - name: copy the nginx config fie for default php
+      - name: copy the nginx config fie for default php7.2
         copy:
           src: /etc/ansible/roles/ansible-lemp/files/ubuntu/default
           dest: /etc/nginx/sites-available/default
@@ -78,6 +76,18 @@
           dest: /etc/nginx/sites-available/php73
         become: yes
 
+      - name: copying nginx config file for php7.1
+        template:
+          src: /etc/ansible/roles/ansible-lemp/files/ubuntu/php71.j2
+          dest: /etc/nginx/sites-available/php71
+        become: yes
+
+      - name: create symlink for php71
+        file:
+          src: /etc/nginx/sites-available/php71
+          dest: /etc/nginx/sites-enabled/php71
+          state: link
+
       - shell: "php -n -v | head -n 1 | cut -d ' ' -f 2 | cut -d '.' -f 1,2"
         register: php_version
       - lineinfile:
@@ -86,7 +96,7 @@
           insertafter: "^include snippets/fastcgi-php.conf;"
           line: "fastcgi_pass unix:/var/run/php/php{{ php_version.stdout }}-fpm.sock;"
 
-      - name: copying 1.php file for default php
+      - name: copying 1.php file for default php7.2
         copy:
           src: /etc/ansible/roles/ansible-lemp/files/1.php
           dest: /var/www/html/
@@ -96,6 +106,12 @@
         copy:
           src: /etc/ansible/roles/ansible-lemp/files/1.php
           dest: /var/www/html/php73/root/
+        become: yes
+
+      - name: copying 1.php file for php7.1
+        copy:
+          src: /etc/ansible/roles/ansible-lemp/files/1.php
+          dest: /var/www/html/php71/root/
         become: yes
 
       - name: service nginx reload
