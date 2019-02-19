@@ -86,14 +86,6 @@
           insertafter: "^include snippets/fastcgi-php.conf;"
           line: "fastcgi_pass unix:/var/run/php/php{{ php_version.stdout }}-fpm.sock;"
 
-      - shell: "php -n -v | head -n 1 | cut -d ' ' -f 2 | cut -d '.' -f 1,2"
-        register: php_version
-      - lineinfile:
-          path: /etc/nginx/sites-available/php73
-          regexp: "^fastcgi_pass unix:"
-          insertafter: "^include snippets/fastcgi-php.conf;"
-          line: "fastcgi_pass unix:/var/run/php/php{{ php_version.stdout }}-fpm.sock;"
-
       - name: copying 1.php file for default php
         copy:
           src: /etc/ansible/roles/ansible-lemp/files/1.php
