@@ -54,7 +54,6 @@
           src: /etc/ansible/roles/ansible-lemp/files/ubuntu/default
           dest: /etc/nginx/sites-available/default
         become: yes
-        notify: define php version for php-fpm.sock
 
       - shell: "php -n -v | head -n 1 | cut -d ' ' -f 2 | cut -d '.' -f 1,2"
         register: php_version
