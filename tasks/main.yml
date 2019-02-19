@@ -53,7 +53,7 @@
 
       - name: Creates directory /var/www/html/php73/root
         file:
-          path: /var/wwww/html/php73/root
+          path: /var/www/html/php73/root
           state: directory
           mode: 0775
 
@@ -89,10 +89,16 @@
           insertafter: "^include snippets/fastcgi-php.conf;"
           line: "fastcgi_pass unix:/var/run/php/php{{ php_version.stdout }}-fpm.sock;"
 
-      - name: copying t.php file for phpinfo
+      - name: copying 1.php file for default php
         copy:
-          src: /etc/ansible/roles/ansible-lemp/files/t.php
+          src: /etc/ansible/roles/ansible-lemp/files/1.php
           dest: /var/www/html/
+        become: yes
+
+      - name: copying 1.php file for phpinfo
+        copy:
+          src: /etc/ansible/roles/ansible-lemp/files/1.php
+          dest: /var/www/html/php73/root/
         become: yes
 
       - name: service nginx reload
