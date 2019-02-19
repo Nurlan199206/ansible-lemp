@@ -48,7 +48,7 @@
       - name: install php7.3 for Debain
         apt: name=php7.3 state=latest
 
-      - name: Install a list of packages
+      - name: Install php-fpm 7.2/7.3
         apt:
           name: "{{ packages }}"
         vars:
