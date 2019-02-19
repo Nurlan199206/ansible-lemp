@@ -27,7 +27,7 @@ mkdir /etc/ansible/roles
 
 for Debian like distros
 
-git clone https://github.com/Nurlan199206/ansible-lemp/etc/ansible/roles/ansible-lemp
+git clone https://github.com/Nurlan199206/ansible-lemp
 
 and
 
