@@ -24,10 +24,9 @@
       - php7.0-dev
       - php7.0-fpm
       - php7.0-gd
-      - php7.0-gdgd
       - php7.0-curl
-      - php7.0-gd-imap
-      - php7.0-gd-json
+      - php7.0-imap
+      - php7.0-json
       - php7.0-opcache
       - php7.0-xml
       - php7.0-mbstring
