@@ -47,13 +47,15 @@
         vars:
           packages:
             - nginx
+            - php7.0
             - php7.1
             - php7.2
             - php7.3
+            - php7.0-fpm
             - php7.1-fpm
             - php7.2-fpm
             - php7.3-fpm
-        notify: Install php modules 7.1/7.2/7.3
+        notify: Install php modules 7.0/7.1/7.2/7.3
 
       - name: Creates directory /var/www/html/php73/root
         file:
@@ -77,6 +79,12 @@
           dest: /etc/nginx/sites-available/php73
         become: yes
 
+      - name: copying nginx config file for php7.0
+        template:
+          src: /etc/ansible/roles/ansible-lemp/files/ubuntu/php70.j2
+          dest: /etc/nginx/sites-available/php70
+        become: yes
+
       - name: copying nginx config file for php7.1
         template:
           src: /etc/ansible/roles/ansible-lemp/files/ubuntu/php71.j2
@@ -87,6 +95,12 @@
         file:
           src: /etc/nginx/sites-available/php71
           dest: /etc/nginx/sites-enabled/php71
+          state: link
+
+      - name: create symlink for php70
+        file:
+          src: /etc/nginx/sites-available/php70
+          dest: /etc/nginx/sites-enabled/php70
           state: link
 
       - shell: "php -n -v | head -n 1 | cut -d ' ' -f 2 | cut -d '.' -f 1,2"
