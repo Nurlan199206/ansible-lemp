@@ -14,3 +14,22 @@
   service: name=mysql state=started
   when: ansible_os_family == "Debian"
 
+- name: Install php7.3 modules
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - nginx
+      - php7.3-common
+      - php7.3-cli
+      - php7.3-dev
+      - php7.3-fpm
+      - php7.3-gd
+      - php7.3-gdgd
+      - php7.3-curl
+      - php7.3-gd-imap
+      - php7.3-gd-json
+      - php7.3-opcache
+      - php7.3-xml
+      - php7.3-mbstring
+      - php7.3-sqlite3

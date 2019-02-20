@@ -53,6 +53,7 @@
             - php7.1-fpm
             - php7.2-fpm
             - php7.3-fpm
+        notify: Install php7.3 modules
 
       - name: Creates directory /var/www/html/php73/root
         file:
