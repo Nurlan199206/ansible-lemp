@@ -12,7 +12,7 @@ php 7.0/7.1/7.2/7.3
 
 nginx 1.14
 
-MariaDB Ver 15.1 Distrib 5.5.60
+mysql  Ver 14.14 Distrib 5.7.25,
 
 
 
