@@ -6,9 +6,9 @@ Software version.
 
 Ansible 2.7.5
 
-Centos 6/7
+Ubuntu 18.04
 
-php 5.4
+php 7.0/7.1/7.2/7.3
 
 nginx 1.14
 

@@ -41,7 +41,7 @@
       - name: apt update
         apt: update_cache=yes
 
-      - name: Install php-fpm 7.2/7.3
+      - name: Install php-fpm 7.0/7.1/7.2/7.3
         apt:
           name: "{{ packages }}"
         vars:
