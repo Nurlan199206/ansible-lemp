@@ -46,3 +46,5 @@ For change PHP versions change ```/etc/nginx/sites-available/default```
 
 ```fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;``` to ```php7.1``` or ```7.3``` or create hosts for every php versions
 
+For check correctly installed php type ```php7.1 -v``` etc...
+
