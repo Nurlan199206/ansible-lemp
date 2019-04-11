@@ -31,7 +31,7 @@ git clone https://github.com/Nurlan199206/ansible-lemp
 
 and
 
-ansible-playbook --connection=local -s /etc/ansible/roles/ansible-lemp/nginx.yml
+```ansible-playbook --connection=local -s /etc/ansible/roles/ansible-lemp/nginx.yml```
 
 
 
@@ -39,7 +39,7 @@ for successfully run playbook, dont forget add in /etc/ansible/ansible.cfg after
 
 invalid_task_attribute_failed=False
 
-=========*PHP-Version check*==========
+=========PHP-Version check==========
 
 
 For change PHP versions change ```/etc/nginx/sites-available/default```
